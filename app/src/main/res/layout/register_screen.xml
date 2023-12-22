@@ -93,6 +93,19 @@
             android:padding="16dp"
             android:textSize="16sp" />
 
+        <TextView
+            android:id="@+id/tvError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/rubik"
+            android:paddingHorizontal="16dp"
+            android:text="@string/login_conf_text"
+            android:textColor="@color/accent"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            android:visibility="gone" />
+
 
         <Button
             android:layout_width="match_parent"

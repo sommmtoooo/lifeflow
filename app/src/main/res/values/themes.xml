@@ -1,5 +1,4 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Theme.LifeFlow" parent="android:Theme.Material.NoActionBar">
-        <item name="android:statusBarColor">@color/accent</item>
-    </style>
+
+    <style name="Theme.LifeFlow" parent="Theme.AppCompat.NoActionBar"/>
 </resources>

@@ -3,6 +3,7 @@
     <color name="light">#F5EDED</color>
     <color name="dark">#000000</color>
     <color name="overlay_secondary">#66000000</color>
+    <color name="black_overlay">#66000000</color>
     <color name="overlay">#3E3636</color>
     <color name="white">#FFFFFFFF</color>
     <color name="font">#333333</color>
