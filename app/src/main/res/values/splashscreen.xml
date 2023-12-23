@@ -1,0 +1,7 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="StatusBar" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:statusBarColor">@color/accent</item>
+    </style>
+
+</resources>

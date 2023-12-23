@@ -25,7 +25,7 @@
             android:exported="false" />
         <activity
             android:name=".views.SplashScreen"
-            android:theme="@style/Theme.LifeFlow"
+            android:theme="@style/StatusBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
