@@ -4,6 +4,7 @@
 
     <application
         android:allowBackup="true"
+        android:appComponentFactory="lifeflow"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/icon"
@@ -11,9 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LifeFlow"
         tools:replace="android:appComponentFactory"
-        android:appComponentFactory="lifeflow"
         tools:targetApi="31">
-
+        <activity
+            android:name=".HealthScreen"
+            android:exported="false" />
         <activity
             android:name=".views.HomeScreen"
             android:exported="false" />
@@ -25,10 +27,11 @@
             android:exported="false" />
         <activity
             android:name=".views.SplashScreen"
-            android:theme="@style/StatusBar"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/StatusBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
