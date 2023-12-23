@@ -1,11 +1,10 @@
 <resources>
-
-    <style name="Widget.Theme.LifeFlow.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
-        <item name="android:background">@color/black_overlay</item>
+    <style name="Widget.App.ButtonStyle"
+        parent="Widget.MaterialComponents.Button">
+        <item name="materialThemeOverlay">@style/Accent</item>
     </style>
 
-    <style name="Widget.Theme.LifeFlow.ButtonBar.Fullscreen" parent="">
-        <item name="android:background">@color/black_overlay</item>
-        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    <style name="Accent">
+        <item name="colorPrimary">@color/accent</item>
     </style>
 </resources>

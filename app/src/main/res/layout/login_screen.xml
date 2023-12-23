@@ -79,8 +79,10 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:background="@drawable/button_background"
+            style="@style/Widget.App.ButtonStyle"
             android:fontFamily="@font/poppins"
             android:text="@string/login_prompt"
+            android:textColor="@color/white"
             android:textAllCaps="false" />
 
         <TextView

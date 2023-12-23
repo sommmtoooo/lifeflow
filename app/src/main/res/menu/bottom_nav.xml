@@ -1,3 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu  xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mtHome"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/mtRequests"
+        android:icon="@drawable/ic_request"
+        android:title="@string/requests" />
+    <item
+        android:id="@+id/mtNotification"
+        android:icon="@drawable/ic_notification"
+        android:title="@string/notifications" />
+    <item
+        android:id="@+id/mtSetting"
+        android:icon="@drawable/ic_profile"
+        android:title="@string/profile" />
 </menu>

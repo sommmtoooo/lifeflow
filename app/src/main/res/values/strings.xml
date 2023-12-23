@@ -14,4 +14,10 @@
     <string name="login_conf_text">Don\'t Have An Account ? Register</string>
     <string name="login_prompt">Login</string>
     <string name="register_txt">Create an account, and get started</string>
+    <string name="home">Home</string>
+    <string name="requests">Requests</string>
+    <string name="notifications">Notifications</string>
+    <string name="profile">Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

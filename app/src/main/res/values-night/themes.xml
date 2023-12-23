@@ -1,4 +1,4 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.LifeFlow" parent="Theme.AppCompat.NoActionBar" />
+    <style name="Theme.LifeFlow" parent="Theme.MaterialComponents.NoActionBar" />
 </resources>

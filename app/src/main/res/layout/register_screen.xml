@@ -106,14 +106,16 @@
             android:textStyle="italic"
             android:visibility="gone" />
 
-
         <Button
+            android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:background="@drawable/button_background"
+            style="@style/Widget.App.ButtonStyle"
             android:fontFamily="@font/poppins"
             android:text="@string/register"
+            android:textColor="@color/white"
             android:textAllCaps="false" />
 
         <TextView
