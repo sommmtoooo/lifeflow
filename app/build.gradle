@@ -43,6 +43,8 @@ dependencies {
 
 //    Custom
     implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.navigation:navigation-fragment:2.7.6'
+    implementation 'androidx.navigation:navigation-ui:2.7.6'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

@@ -5,4 +5,13 @@
         <item name="android:statusBarColor">@color/accent</item>
     </style>
 
+    <style name="Theme.LifeFlow.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.LifeFlow.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.LifeFlow.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>
