@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/transparent"
+    tools:context=".views.fragments.EditProfileFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/profile"
+        android:textColor="@color/accent"
+        android:textSize="24sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="24dp"
+        android:autofillHints=""
+        android:background="@drawable/field_overlay"
+        android:fontFamily="@font/rubik"
+        android:hint="@string/firstname"
+        android:inputType="text"
+        android:padding="16dp"
+        android:textSize="16sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:autofillHints="name"
+        android:background="@drawable/field_overlay"
+        android:fontFamily="@font/rubik"
+        android:hint="@string/lastname"
+        android:inputType="text"
+        android:padding="16dp"
+        android:textSize="16sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:autofillHints="emailAddress"
+        android:background="@drawable/field_overlay"
+        android:fontFamily="@font/rubik"
+        android:hint="@string/email_address"
+        android:inputType="textEmailAddress"
+        android:padding="16dp"
+        android:textSize="16sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:autofillHints="password"
+        android:background="@drawable/field_overlay"
+        android:fontFamily="@font/rubik"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:textSize="16sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:autofillHints="password"
+        android:background="@drawable/field_overlay"
+        android:fontFamily="@font/rubik"
+        android:hint="@string/confirm_password"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvError"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/rubik"
+        android:paddingHorizontal="16dp"
+        android:text="@string/login_conf_text"
+        android:textColor="@color/accent"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/button_background"
+        style="@style/Widget.App.ButtonStyle"
+        android:fontFamily="@font/poppins"
+        android:text="@string/update"
+        android:textColor="@color/white"
+        android:textAllCaps="false" />
+
+
+</LinearLayout>

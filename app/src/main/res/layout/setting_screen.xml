@@ -6,12 +6,13 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
     android:orientation="vertical"
-    tools:context=".SettingScreen">
+    tools:context=".views.SettingScreen">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/accent">
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -30,8 +31,9 @@
     <FrameLayout
         android:id="@+id/flSetting"
         android:layout_width="match_parent"
-        android:layout_height="@android:dimen/thumbnail_height"
-        android:background="@color/accent" />
+        android:layout_height="match_parent"
+        android:background="@color/light"
+        android:padding="10dp" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

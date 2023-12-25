@@ -1,13 +1,23 @@
 package com.somtodev.lifeflow.views.fragments;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.navigation.NavigationView;
 import com.somtodev.lifeflow.R;
+import com.somtodev.lifeflow.views.SettingScreen;
+
+import java.util.Objects;
 
 public class SettingFragment extends Fragment {
 
@@ -19,19 +29,12 @@ public class SettingFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private Activity activity;
+
     public SettingFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SettingFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static SettingFragment newInstance(String param1, String param2) {
         SettingFragment fragment = new SettingFragment();
         Bundle args = new Bundle();
@@ -49,12 +52,48 @@ public class SettingFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        Activity activity = getActivity();
+        assert activity != null;
+
+        NavigationView navigationView = activity.findViewById(R.id.navProfile);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                int id = item.getItemId();
+
+                if (id == R.id.mtEdit) {
+                    setScreen(R.id.mtEdit);
+                } else if (id == R.id.mtIssues) {
+                    Toast.makeText(activity, "Issues Page", Toast.LENGTH_SHORT).show(); } else if (id == R.id.mtLogOut) {
+                    Toast.makeText(activity, "Logging Out", Toast.LENGTH_SHORT).show();
+                } else {
+                    return false;
+                }
+
+                return true;
+            }
+        });
+
+    }
+
+    private void setScreen(int id) {
+        Intent intent = new Intent(getActivity(), SettingScreen.class);
+        intent.putExtra("FRAGMENT", id);
+        startActivity(intent);
+        Objects.requireNonNull(getActivity()).finish();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.setting_fragment, container, false);
     }
 }

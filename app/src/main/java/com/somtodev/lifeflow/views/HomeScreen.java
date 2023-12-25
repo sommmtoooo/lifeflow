@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.somtodev.lifeflow.R;
+import com.somtodev.lifeflow.utils.Utils;
 import com.somtodev.lifeflow.views.fragments.HomeFragment;
 import com.somtodev.lifeflow.views.fragments.NotificationFragment;
 import com.somtodev.lifeflow.views.fragments.RequestFragment;
@@ -54,10 +55,12 @@ public class HomeScreen extends AppCompatActivity {
         });
 
         bottomNavigationView.getOrCreateBadge(R.id.mtRequests).setNumber(10);
+        bottomNavigationView.getOrCreateBadge(R.id.mtNotification).setNumber(4);
 
     }
 
     private void setCurrentFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.flDisplay, fragment).commit();
+        Utils.setCurrentFragment(this, R.id.flDisplay, fragment);
     }
+
 }
