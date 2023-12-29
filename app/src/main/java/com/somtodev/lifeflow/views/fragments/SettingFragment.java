@@ -17,8 +17,6 @@ import com.google.android.material.navigation.NavigationView;
 import com.somtodev.lifeflow.R;
 import com.somtodev.lifeflow.views.SettingScreen;
 
-import java.util.Objects;
-
 public class SettingFragment extends Fragment {
 
 
@@ -88,7 +86,6 @@ public class SettingFragment extends Fragment {
         Intent intent = new Intent(getActivity(), SettingScreen.class);
         intent.putExtra("FRAGMENT", id);
         startActivity(intent);
-        Objects.requireNonNull(getActivity()).finish();
     }
 
     @Override

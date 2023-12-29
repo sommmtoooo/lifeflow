@@ -2,7 +2,7 @@
 
     <style name="Theme.LifeFlow" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:fontFamily">@font/rubik</item>
-        <item name="android:statusBarColor">@color/accent</item>
+<!--        <item name="android:statusBarColor">@color/accent</item>-->
     </style>
 
     <style name="Theme.LifeFlow.NoActionBar">
