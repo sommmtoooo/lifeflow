@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,8 +12,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:orientation="vertical"
         tools:ignore="UselessParent">
 
@@ -35,6 +33,7 @@
 
 
         <EditText
+            android:id="@+id/edtFirstname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="24dp"
@@ -47,6 +46,7 @@
             android:textSize="16sp" />
 
         <EditText
+            android:id="@+id/edtLastname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
@@ -59,6 +59,7 @@
             android:textSize="16sp" />
 
         <EditText
+            android:id="@+id/edtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
@@ -70,7 +71,18 @@
             android:padding="16dp"
             android:textSize="16sp" />
 
+        <Spinner
+            android:id="@+id/spBloodGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/groups"
+            android:background="@drawable/field_overlay"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp"
+            />
+
         <EditText
+            android:id="@+id/edtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
@@ -83,6 +95,7 @@
             android:textSize="16sp" />
 
         <EditText
+            android:id="@+id/edtConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
@@ -108,7 +121,7 @@
             android:visibility="gone" />
 
         <Button
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
@@ -120,6 +133,7 @@
             android:textAllCaps="false" />
 
         <TextView
+            android:id="@+id/tvLink"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/rubik"
@@ -131,4 +145,4 @@
     </LinearLayout>
 
 
-</RelativeLayout>
+</ScrollView>

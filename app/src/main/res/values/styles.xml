@@ -4,7 +4,15 @@
         <item name="materialThemeOverlay">@style/Accent</item>
     </style>
 
+    <style name="Widget.App.ButtonStyleBlack"
+        parent="Widget.MaterialComponents.Button">
+        <item name="materialThemeOverlay">@style/Dark</item>
+    </style>
+
     <style name="Accent">
         <item name="colorPrimary">@color/accent</item>
+    </style>
+    <style name="Dark">
+        <item name="colorPrimary">@color/dark</item>
     </style>
 </resources>

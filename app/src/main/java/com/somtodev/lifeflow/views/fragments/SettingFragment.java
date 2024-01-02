@@ -14,7 +14,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.somtodev.lifeflow.R;
+import com.somtodev.lifeflow.views.LoginScreen;
 import com.somtodev.lifeflow.views.SettingScreen;
 
 public class SettingFragment extends Fragment {
@@ -70,8 +72,13 @@ public class SettingFragment extends Fragment {
                 if (id == R.id.mtEdit) {
                     setScreen(R.id.mtEdit);
                 } else if (id == R.id.mtIssues) {
-                    Toast.makeText(activity, "Issues Page", Toast.LENGTH_SHORT).show(); } else if (id == R.id.mtLogOut) {
-                    Toast.makeText(activity, "Logging Out", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, "Issues Page", Toast.LENGTH_SHORT).show();
+                } else if (id == R.id.mtLogOut) {
+                    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                    mAuth.signOut();
+                    Intent intent = new Intent(view.getContext(), LoginScreen.class);
+                    view.getContext().startActivity(intent);
+                    getActivity().finish();
                 } else {
                     return false;
                 }
