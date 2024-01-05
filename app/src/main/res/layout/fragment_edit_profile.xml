@@ -7,14 +7,6 @@
     android:background="@android:color/transparent"
     tools:context=".views.fragments.EditProfileFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_medium"
-        android:text="@string/profile"
-        android:textColor="@color/accent"
-        android:textSize="24sp" />
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,6 +42,16 @@
         android:inputType="textEmailAddress"
         android:padding="16dp"
         android:textSize="16sp" />
+
+    <Spinner
+        android:id="@+id/spBloodGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/groups"
+        android:background="@drawable/field_overlay"
+        android:padding="16dp"
+        android:layout_marginBottom="24dp"
+        />
 
     <EditText
         android:layout_width="match_parent"

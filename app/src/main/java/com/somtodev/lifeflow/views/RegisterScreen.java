@@ -130,8 +130,6 @@ public class RegisterScreen extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(RegisterScreen.this, "Account Created", Toast.LENGTH_SHORT).show();
-
                     FirebaseUser firebaseUser = mAuth.getCurrentUser();
                     DocumentReference documentReference = firebaseFirestore.collection("users").document();
                     Map<String, String> user = new HashMap<>();

@@ -59,7 +59,7 @@ public class HomeScreen extends AppCompatActivity {
 
     }
 
-    private void setCurrentFragment(Fragment fragment) {
+    public void setCurrentFragment(Fragment fragment) {
         Utils.setCurrentFragment(this, R.id.flDisplay, fragment);
     }
 

@@ -3,6 +3,7 @@ package com.somtodev.lifeflow.views.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -72,13 +73,20 @@ public class SettingFragment extends Fragment {
                 if (id == R.id.mtEdit) {
                     setScreen(R.id.mtEdit);
                 } else if (id == R.id.mtIssues) {
-                    Toast.makeText(activity, "Issues Page", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, "Feature Not Implemented", Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.mtLogOut) {
-                    FirebaseAuth mAuth = FirebaseAuth.getInstance();
-                    mAuth.signOut();
-                    Intent intent = new Intent(view.getContext(), LoginScreen.class);
-                    view.getContext().startActivity(intent);
-                    getActivity().finish();
+                    Toast.makeText(activity, "Logging out :)", Toast.LENGTH_SHORT).show();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(activity, "Goodbye :)", Toast.LENGTH_SHORT).show();
+                            FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                            mAuth.signOut();
+                            Intent intent = new Intent(view.getContext(), LoginScreen.class);
+                            view.getContext().startActivity(intent);
+                            getActivity().finish();
+                        }
+                    }, 1000);
                 } else {
                     return false;
                 }
