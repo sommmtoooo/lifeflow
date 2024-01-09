@@ -8,6 +8,7 @@
     tools:context=".views.fragments.EditProfileFragment">
 
     <EditText
+        android:id="@id/edtFirstname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="24dp"
@@ -20,6 +21,7 @@
         android:textSize="16sp" />
 
     <EditText
+        android:id="@id/edtLastname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
@@ -31,17 +33,6 @@
         android:padding="16dp"
         android:textSize="16sp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:autofillHints="emailAddress"
-        android:background="@drawable/field_overlay"
-        android:fontFamily="@font/rubik"
-        android:hint="@string/email_address"
-        android:inputType="textEmailAddress"
-        android:padding="16dp"
-        android:textSize="16sp" />
 
     <Spinner
         android:id="@+id/spBloodGroup"
@@ -53,29 +44,6 @@
         android:layout_marginBottom="24dp"
         />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:autofillHints="password"
-        android:background="@drawable/field_overlay"
-        android:fontFamily="@font/rubik"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        android:padding="16dp"
-        android:textSize="16sp" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:autofillHints="password"
-        android:background="@drawable/field_overlay"
-        android:fontFamily="@font/rubik"
-        android:hint="@string/confirm_password"
-        android:inputType="textPassword"
-        android:padding="16dp"
-        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tvError"
@@ -91,7 +59,7 @@
         android:visibility="gone" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"

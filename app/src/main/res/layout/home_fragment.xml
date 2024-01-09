@@ -68,24 +68,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <include
-                layout="@layout/request_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp" />
-
-            <include
-                layout="@layout/request_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp" />
-
-            <include
-                layout="@layout/request_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvBloodRequests"
                 android:layout_width="match_parent"
@@ -94,7 +76,7 @@
 
 
             <Button
-                android:id="@+id/btnRequests"
+                android:id="@+id/btnShowMore"
                 style="@style/Widget.App.ButtonStyleBlack"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

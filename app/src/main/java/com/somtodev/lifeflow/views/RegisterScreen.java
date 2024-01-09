@@ -78,7 +78,6 @@ public class RegisterScreen extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 bloodGroup = parent.getItemAtPosition((int) id).toString();
-                Toast.makeText(RegisterScreen.this, bloodGroup, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -133,7 +132,6 @@ public class RegisterScreen extends AppCompatActivity {
                     FirebaseUser firebaseUser = mAuth.getCurrentUser();
                     DocumentReference documentReference = firebaseFirestore.collection("users").document();
                     Map<String, String> user = new HashMap<>();
-                    user.put("firstname", firstname);
                     user.put("lastname", lastname);
                     user.put("email", email);
                     user.put("password", password);

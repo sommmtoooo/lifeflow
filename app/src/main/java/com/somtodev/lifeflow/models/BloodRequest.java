@@ -5,69 +5,39 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import java.time.LocalDateTime;
-
 public class BloodRequest implements Parcelable {
+
     private String centerName;
     private String centerLocation;
-    private int bloodPacks;
-    private LocalDateTime  dueDate;
-    private boolean urgent;
+
+
+    private String bloodGroup;
+    private String packs;
+    private String dueDate;
+
+    private String urgent;
     private String status;
 
-    public String getCenterName() {
-        return centerName;
+    public BloodRequest() {
     }
 
-    public void setCenterName(String centerName) {
+    public BloodRequest(String centerName, String centerLocation, String bloodGroup, String packs, String dueDate, String urgent, String status) {
         this.centerName = centerName;
-    }
-
-    public String getCenterLocation() {
-        return centerLocation;
-    }
-
-    public void setCenterLocation(String centerLocation) {
         this.centerLocation = centerLocation;
-    }
-
-    public int getBloodPacks() {
-        return bloodPacks;
-    }
-
-    public void setBloodPacks(int bloodPacks) {
-        this.bloodPacks = bloodPacks;
-    }
-
-    public LocalDateTime getDueDate() {
-        return dueDate;
-    }
-
-    public void setDueDate(LocalDateTime dueDate) {
+        this.bloodGroup = bloodGroup;
+        this.packs = packs;
         this.dueDate = dueDate;
-    }
-
-    public boolean isUrgent() {
-        return urgent;
-    }
-
-    public void setUrgent(boolean urgent) {
         this.urgent = urgent;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
         this.status = status;
     }
 
     protected BloodRequest(Parcel in) {
         centerName = in.readString();
         centerLocation = in.readString();
-        bloodPacks = in.readInt();
-        urgent = in.readByte() != 0;
+        bloodGroup = in.readString();
+        packs = in.readString();
+        dueDate = in.readString();
+        urgent = in.readString();
         status = in.readString();
     }
 
@@ -92,8 +62,67 @@ public class BloodRequest implements Parcelable {
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeString(centerName);
         dest.writeString(centerLocation);
-        dest.writeInt(bloodPacks);
-        dest.writeByte((byte) (urgent ? 1 : 0));
+        dest.writeString(bloodGroup);
+        dest.writeString(packs);
+        dest.writeString(dueDate);
+        dest.writeString(urgent);
         dest.writeString(status);
     }
+
+    public String getCenterName() {
+        return centerName;
+    }
+
+    public void setCenterName(String centerName) {
+        this.centerName = centerName;
+    }
+
+    public String getCenterLocation() {
+        return centerLocation;
+    }
+
+    public void setCenterLocation(String centerLocation) {
+        this.centerLocation = centerLocation;
+    }
+
+    public String getBloodGroup() {
+        return bloodGroup;
+    }
+
+    public void setBloodGroup(String bloodGroup) {
+        this.bloodGroup = bloodGroup;
+    }
+
+    public String getPacks() {
+        return packs;
+    }
+
+    public void setBloodPacks(String packs) {
+        this.packs = packs;
+    }
+
+    public String getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public String isUrgent() {
+        return urgent;
+    }
+
+    public void setUrgent(String urgent) {
+        this.urgent = urgent;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 }
