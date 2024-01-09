@@ -6,14 +6,21 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class FirebaseUtils {
-    public static FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    public static FirebaseFirestore database = FirebaseFirestore.getInstance();
 
-    public static FirebaseUser getCurrentUser(){
+    public FirebaseAuth firebaseAuth;
+    public FirebaseFirestore database;
+
+
+    public FirebaseUtils() {
+        firebaseAuth = FirebaseAuth.getInstance();
+        database = FirebaseFirestore.getInstance();
+    }
+
+    public FirebaseUser getCurrentUser() {
         return firebaseAuth.getCurrentUser();
     }
 
-    public static String getUserFirstname(){
+    public String getUserFirstname() {
         DocumentReference documentReference = database.collection("user").document();
         return "";
     }

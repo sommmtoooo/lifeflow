@@ -35,7 +35,8 @@ public class RequestFragment extends Fragment {
 
 
         recyclerView = (RecyclerView) view.findViewById(R.id.rvBloodRequests);
-        Query query = FirebaseUtils.database.collection("requests");
+        FirebaseUtils firebaseUtils = new FirebaseUtils();
+        Query query = firebaseUtils.database.collection("requests");
         FirestoreRecyclerOptions<BloodRequest> requests = new FirestoreRecyclerOptions.Builder<BloodRequest>().setQuery(query, BloodRequest.class).build();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));

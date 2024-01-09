@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,8 +18,12 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.somtodev.lifeflow.R;
 import com.somtodev.lifeflow.adapters.BloodRequestAdapter;
 import com.somtodev.lifeflow.lib.FirebaseUtils;
@@ -53,8 +58,28 @@ public class HomeFragment extends Fragment {
 
         tvUsername.setText("Welcome");
 
-        Query query = FirebaseUtils.database.collection("requests").orderBy("dueDate", Query.Direction.ASCENDING).limit(5);
+        FirebaseUtils firebaseUtils = new FirebaseUtils();
+        Query query = firebaseUtils.database.collection("requests").orderBy("dueDate", Query.Direction.ASCENDING).limit(5);
         FirestoreRecyclerOptions<BloodRequest> requests = new FirestoreRecyclerOptions.Builder<BloodRequest>().setQuery(query, BloodRequest.class).build();
+
+        query.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot snapshots, @Nullable FirebaseFirestoreException error) {
+                if (error != null)
+                    return;
+
+                assert snapshots != null;
+                for (DocumentChange change : snapshots.getDocumentChanges()) {
+                    if (change.getType() == DocumentChange.Type.ADDED) {
+                        NotificationCompat.Builder builder = new NotificationCompat.Builder(view.getContext(), "channel_01")
+                                .setSmallIcon(R.drawable.icon_background)
+                                .setContentTitle("New Blood Request")
+                                .setContentText("Help someone today, by donating")
+                                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                    }
+                }
+            }
+        });
 
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         bloodRequestAdapter = new BloodRequestAdapter(requests, view.getContext());
