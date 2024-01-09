@@ -21,6 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.somtodev.lifeflow.R;
 import com.somtodev.lifeflow.adapters.BloodRequestAdapter;
+import com.somtodev.lifeflow.lib.FirebaseUtils;
 import com.somtodev.lifeflow.models.BloodRequest;
 
 public class HomeFragment extends Fragment {
@@ -45,9 +46,6 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser = firebaseAuth.getCurrentUser();
-        firebaseFirestore = FirebaseFirestore.getInstance();
 
         tvUsername = (TextView) view.findViewById(R.id.tvUsername);
         btnRequest = (Button) view.findViewById(R.id.btnShowMore);
@@ -55,7 +53,7 @@ public class HomeFragment extends Fragment {
 
         tvUsername.setText("Welcome");
 
-        Query query = firebaseFirestore.collection("requests").orderBy("dueDate", Query.Direction.ASCENDING).limit(5);
+        Query query = FirebaseUtils.database.collection("requests").orderBy("dueDate", Query.Direction.ASCENDING).limit(5);
         FirestoreRecyclerOptions<BloodRequest> requests = new FirestoreRecyclerOptions.Builder<BloodRequest>().setQuery(query, BloodRequest.class).build();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));

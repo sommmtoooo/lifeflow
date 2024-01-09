@@ -6,8 +6,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class FirebaseUtils {
-    static FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    static FirebaseFirestore database = FirebaseFirestore.getInstance();
+    public static FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    public static FirebaseFirestore database = FirebaseFirestore.getInstance();
+
     public static FirebaseUser getCurrentUser(){
         return firebaseAuth.getCurrentUser();
     }
