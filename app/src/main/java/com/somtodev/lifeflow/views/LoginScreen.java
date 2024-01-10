@@ -91,7 +91,7 @@ public class LoginScreen extends AppCompatActivity {
         }
 
         textViewError.setVisibility(View.GONE);
-        Toast.makeText(this, "Logging In", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Signing You In", Toast.LENGTH_SHORT).show();
 
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override

@@ -5,13 +5,19 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import java.util.Date;
-
 public class User implements Parcelable {
+
+
     private String firstname;
     private String lastname;
-    private Date dateOfBirth;
+
     private String bloodGroup;
+
+    public User(String firstname, String lastname, String bloodGroup) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.bloodGroup = bloodGroup;
+    }
 
     public String getFirstname() {
         return firstname;
@@ -27,14 +33,6 @@ public class User implements Parcelable {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
     }
 
     public String getBloodGroup() {

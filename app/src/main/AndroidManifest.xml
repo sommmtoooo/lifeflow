@@ -20,13 +20,12 @@
             android:name=".views.SettingScreen"
             android:exported="false"
             android:label="@string/title_activity_setting_screen"
-            android:theme="@style/Theme.LifeFlow.NoActionBar" />
-        <activity
-            android:name=".HealthScreen"
-            android:exported="false" />
+            android:theme="@style/StatusBar" />
+
         <activity
             android:name=".views.HomeScreen"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/StatusBar" />
         <activity
             android:name=".views.RegisterScreen"
             android:exported="false" />

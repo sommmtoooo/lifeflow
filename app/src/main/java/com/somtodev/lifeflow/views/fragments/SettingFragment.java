@@ -79,7 +79,6 @@ public class SettingFragment extends Fragment {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(activity, "Goodbye :)", Toast.LENGTH_SHORT).show();
                             FirebaseAuth mAuth = FirebaseAuth.getInstance();
                             mAuth.signOut();
                             Intent intent = new Intent(view.getContext(), LoginScreen.class);

@@ -2,7 +2,6 @@ package com.somtodev.lifeflow.lib;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class FirebaseUtils {
@@ -20,8 +19,5 @@ public class FirebaseUtils {
         return firebaseAuth.getCurrentUser();
     }
 
-    public String getUserFirstname() {
-        DocumentReference documentReference = database.collection("user").document();
-        return "";
-    }
+
 }

@@ -8,15 +8,21 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.somtodev.lifeflow.R;
+import com.somtodev.lifeflow.lib.FirebaseUtils;
 import com.somtodev.lifeflow.utils.Utils;
 import com.somtodev.lifeflow.views.fragments.HomeFragment;
-import com.somtodev.lifeflow.views.fragments.NotificationFragment;
 import com.somtodev.lifeflow.views.fragments.RequestFragment;
 import com.somtodev.lifeflow.views.fragments.SettingFragment;
 
 public class HomeScreen extends AppCompatActivity {
+
+    private FirebaseUtils firebaseUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +31,11 @@ public class HomeScreen extends AppCompatActivity {
 
         HomeFragment homeFragment = new HomeFragment();
         RequestFragment requestFragment = new RequestFragment();
-        NotificationFragment notificationFragment = new NotificationFragment();
         SettingFragment settingFragment = new SettingFragment();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
+        firebaseUtils = new FirebaseUtils();
         setCurrentFragment(homeFragment);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -43,9 +49,6 @@ public class HomeScreen extends AppCompatActivity {
                     case R.id.mtRequests:
                         setCurrentFragment(requestFragment);
                         return true;
-                    case R.id.mtNotification:
-                        setCurrentFragment(notificationFragment);
-                        return true;
                     case R.id.mtSetting:
                         setCurrentFragment(settingFragment);
                         return true;
@@ -54,9 +57,23 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
-        bottomNavigationView.getOrCreateBadge(R.id.mtRequests).setNumber(10);
-        bottomNavigationView.getOrCreateBadge(R.id.mtNotification).setNumber(4);
 
+    }
+
+    public void updateRequestCount() {
+        firebaseUtils.database.collection("requests").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+                if (task.isSuccessful()) {
+                    int count = 0;
+                    for (DocumentSnapshot document : task.getResult()) {
+                        count++;
+                    }
+                    bottomNavigationView.getOrCreateBadge(R.id.mtRequests).setNumber(count);
+                }
+            }
+        });
     }
 
     public void setCurrentFragment(Fragment fragment) {

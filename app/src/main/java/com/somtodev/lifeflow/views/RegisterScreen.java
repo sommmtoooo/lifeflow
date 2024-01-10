@@ -2,6 +2,7 @@ package com.somtodev.lifeflow.views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,6 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.somtodev.lifeflow.R;
+import com.somtodev.lifeflow.lib.FirebaseUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -94,7 +96,6 @@ public class RegisterScreen extends AppCompatActivity {
         String email = edtEmailAddress.getText().toString();
         String password = edtPassword.getText().toString();
         String confirmPassword = edtConfirmPassword.getText().toString();
-        String result = firstname + lastname + email + password + bloodGroup;
 
         if (TextUtils.isEmpty(firstname) || firstname.length() < 3) {
             showErrorMessage("Provide a firstname");
@@ -123,26 +124,32 @@ public class RegisterScreen extends AppCompatActivity {
 
         tvError.setVisibility(View.GONE);
 
-        Toast.makeText(RegisterScreen.this, result, Toast.LENGTH_SHORT).show();
-
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     FirebaseUser firebaseUser = mAuth.getCurrentUser();
-                    DocumentReference documentReference = firebaseFirestore.collection("users").document();
+                    DocumentReference documentReference = firebaseFirestore.collection("users").document(firebaseUser.getUid());
                     Map<String, String> user = new HashMap<>();
+                    user.put("firstname", firstname);
                     user.put("lastname", lastname);
-                    user.put("email", email);
-                    user.put("password", password);
                     user.put("bloodGroup", bloodGroup);
 
                     documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
-                            Intent intent = new Intent(RegisterScreen.this, LoginScreen.class);
-                            startActivity(intent);
-                            finish();
+                            Toast.makeText(RegisterScreen.this, "Account Created", Toast.LENGTH_SHORT).show();
+                            FirebaseUtils firebaseUtils = new FirebaseUtils();
+                            firebaseUtils.firebaseAuth.signOut();
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Intent intent = new Intent(RegisterScreen.this, LoginScreen.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            }, 1500);
+
                         }
 
                     });
@@ -155,7 +162,7 @@ public class RegisterScreen extends AppCompatActivity {
                         showErrorMessage("Password strength is too weak");
                     } catch (Exception exception) {
                         showErrorMessage("An Error Occurred: Please try again");
-                        Toast.makeText(RegisterScreen.this, "Try again", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterScreen.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

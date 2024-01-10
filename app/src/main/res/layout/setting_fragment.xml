@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             app:itemIconTint="@color/accent"
-            app:itemTextColor="@color/accent"
+            app:itemTextColor="@color/dark"
             app:menu="@menu/profile_menu"
 
             />
@@ -39,7 +39,7 @@
         android:fontFamily="@font/poppins_medium"
         android:padding="10dp"
         android:text="@string/setting"
-        android:textColor="@color/accent"
+        android:textColor="@color/dark"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

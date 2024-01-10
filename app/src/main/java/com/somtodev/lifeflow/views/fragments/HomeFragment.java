@@ -1,6 +1,8 @@
 package com.somtodev.lifeflow.views.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -28,6 +32,10 @@ import com.somtodev.lifeflow.R;
 import com.somtodev.lifeflow.adapters.BloodRequestAdapter;
 import com.somtodev.lifeflow.lib.FirebaseUtils;
 import com.somtodev.lifeflow.models.BloodRequest;
+import com.somtodev.lifeflow.utils.Utils;
+import com.somtodev.lifeflow.views.HomeScreen;
+
+import java.util.Objects;
 
 public class HomeFragment extends Fragment {
 
@@ -51,15 +59,46 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        FirebaseUtils firebaseUtils = new FirebaseUtils();
 
         tvUsername = (TextView) view.findViewById(R.id.tvUsername);
         btnRequest = (Button) view.findViewById(R.id.btnShowMore);
         recyclerView = (RecyclerView) view.findViewById(R.id.rvBloodRequests);
 
-        tvUsername.setText("Welcome");
+        btnRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomeScreen homeScreen = (HomeScreen) getActivity();
+                if (homeScreen != null) {
+                    homeScreen.setCurrentFragment(new RequestFragment());
+                }
+            }
+        });
 
-        FirebaseUtils firebaseUtils = new FirebaseUtils();
-        Query query = firebaseUtils.database.collection("requests").orderBy("dueDate", Query.Direction.ASCENDING).limit(5);
+
+        tvUsername.setText("Donating Saves Lives");
+        firebaseUtils.database.collection("users").document(firebaseUtils.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (documentSnapshot.getData() == null) {
+                            tvUsername.setText("Welcome");
+                            return;
+                        }
+
+                        String firstname = (String) Objects.requireNonNull(documentSnapshot.getData()).get("firstname");
+                        tvUsername.setText("Hello, " + firstname);
+                    }
+                }, 3000);
+
+            }
+        });
+
+
+        Query query = firebaseUtils.database.collection("requests").orderBy("dueDate", Query.Direction.ASCENDING).whereGreaterThan("dueDate", Utils.getRawDateFormat()).limit(5);
         FirestoreRecyclerOptions<BloodRequest> requests = new FirestoreRecyclerOptions.Builder<BloodRequest>().setQuery(query, BloodRequest.class).build();
 
         query.addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -71,8 +110,13 @@ public class HomeFragment extends Fragment {
                 assert snapshots != null;
                 for (DocumentChange change : snapshots.getDocumentChanges()) {
                     if (change.getType() == DocumentChange.Type.ADDED) {
+                        HomeScreen homeScreen = (HomeScreen) getActivity();
+                        if (homeScreen != null) {
+                            homeScreen.updateRequestCount();
+                        }
+                        // Do Some Notification Magic
                         NotificationCompat.Builder builder = new NotificationCompat.Builder(view.getContext(), "channel_01")
-                                .setSmallIcon(R.drawable.icon_background)
+                                .setSmallIcon(R.mipmap.icon)
                                 .setContentTitle("New Blood Request")
                                 .setContentText("Help someone today, by donating")
                                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
